@@ -36,5 +36,5 @@ app.use("/api/audios", audioRoutes);
 app.use("/api/books", bookRoutes);
 
 app.listen(port, () => {
-  console.log(`App running on port ${port}`);
+  console.log(`App running on port => ${port}`);
 });
