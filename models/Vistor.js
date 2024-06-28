@@ -22,6 +22,13 @@ const vistorSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    image: {
+      type: String,
+    },
+    check: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

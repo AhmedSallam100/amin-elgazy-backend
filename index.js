@@ -19,6 +19,8 @@ const studentRoutes = require("./routes/studentRoutes");
 const userRoutes = require("./routes/userRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const vistorRoutes = require("./routes/vistorRoutes");
+const degreeRoutes = require("./routes/degreeRoutes");
+const parentsRoutes = require("./routes/parentsRoutes");
 const { cloudinaryUploadImage } = require("./utils/cloudinary");
 const { notFound, errorHandler } = require("./middlewares/error");
 const Message = require("./models/Message");
@@ -53,6 +55,10 @@ app.use("/api/students", studentRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/vistors", vistorRoutes);
+app.use("/api/degrees", degreeRoutes);
+app.use("/api/parents", parentsRoutes);
+app.use(notFound);
+app.use(errorHandler);
 
 async function getVistorDataFromRequest(req) {
   return new Promise((resolve, reject) => {
@@ -93,9 +99,6 @@ app.get("/api/people", async (req, res) => {
   const users = await Vistor.find({}, { _id: 1, username: 1 });
   res.json(users);
 });
-
-app.use(notFound);
-app.use(errorHandler);
 
 const server = app.listen(port, () => {
   console.log(`App running on port => ${port}`);

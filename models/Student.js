@@ -2,21 +2,26 @@ const mongoose = require("mongoose");
 
 const studentchema = new mongoose.Schema(
   {
-    name: {
+    studentId: {
       type: String,
-      required: true,
     },
     code: {
-      type: Number,
-      required: true,
-    },
-    grad: {
       type: String,
-      required: true,
     },
-    place: {
+    name: {
       type: String,
-      required: true,
+    },
+    time: {
+      type: String,
+    },
+    phone: {
+      type: String,
+    },
+    parentPhone: {
+      type: String,
+    },
+    adress: {
+      type: String,
     },
   },
   { timestamps: true }
