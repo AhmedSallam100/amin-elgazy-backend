@@ -21,6 +21,7 @@ const reviewRoutes = require("./routes/reviewRoutes");
 const vistorRoutes = require("./routes/vistorRoutes");
 const degreeRoutes = require("./routes/degreeRoutes");
 const parentsRoutes = require("./routes/parentsRoutes");
+const whatsappRoutes = require("./routes/whatsappRoutes");
 const { cloudinaryUploadImage } = require("./utils/cloudinary");
 const { notFound, errorHandler } = require("./middlewares/error");
 const Message = require("./models/Message");
@@ -57,6 +58,7 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/vistors", vistorRoutes);
 app.use("/api/degrees", degreeRoutes);
 app.use("/api/parents", parentsRoutes);
+app.use("/api/whatsapp", whatsappRoutes);
 app.use(notFound);
 app.use(errorHandler);
 

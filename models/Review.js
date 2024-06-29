@@ -19,6 +19,10 @@ const reviewSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    approve: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
