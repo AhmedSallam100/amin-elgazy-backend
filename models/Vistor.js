@@ -14,11 +14,26 @@ const vistorSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    address: {
+    payPhone: {
+      type: String,
+      required: true,
+    },
+    grade: {
+      type: String,
+      required: true,
+    },
+    gradeAr: {
       type: String,
       required: true,
     },
     time: {
+      type: String,
+    },
+    type: {
+      type: String,
+      required: true,
+    },
+    typeAr: {
       type: String,
       required: true,
     },

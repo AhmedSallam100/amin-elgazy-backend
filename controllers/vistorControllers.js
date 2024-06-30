@@ -16,7 +16,8 @@ dotenv.config();
  * @method  POST
 =============================*/
 const registerNewVistor = async (req, res, next) => {
-  const { username, phone, parentPhone, address, time } = req.body;
+  const { username, phone, parentPhone, payPhone, grade, time, type } =
+    req.body;
 
   // Data of image
   const image = req.file ? req.file.filename : null;
@@ -32,8 +33,25 @@ const registerNewVistor = async (req, res, next) => {
       username,
       phone,
       parentPhone,
-      address,
+      payPhone,
+      grade,
+      gradeAr:
+        grade == "1prep"
+          ? "الأول الإعدادي"
+          : grade == "2prep"
+          ? "الثاني الإعدادي"
+          : grade == "3prep"
+          ? "الثالث الإعدادي"
+          : grade == "1sec"
+          ? "الأول الثانوي"
+          : grade == "2sec"
+          ? "الثاني الثانوي"
+          : grade == "3sec"
+          ? "الثالث الثانوي"
+          : "",
       time,
+      type,
+      typeAr: type === "centre" ? "سنتر" : type === "online" ? "أونلاين" : "",
       image: result.secure_url,
     });
 
