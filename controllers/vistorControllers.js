@@ -86,18 +86,20 @@ const registerNewVistor = async (req, res, next) => {
   * @method  GET
 =============================*/
 const getVistorProfile = async (req, res, next) => {
-  const token = req.cookies?.token;
+  const { id } = req.params;
 
-  if (!token) {
-    return res.status(401).json({ message: "No token provided" });
-  }
+  try {
+    const vistor = await Vistor.findById(id);
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, userData) => {
-    if (err) {
-      return res.status(403).json({ message: "Invalid token" });
+    if (!vistor) {
+      return res.status(404).json({ message: "المستخدم غير موجود" });
     }
-    res.json(userData);
-  });
+
+    res.status(200).json(vistor);
+  } catch (error) {
+    console.error("خطأ في جلب بيانات المستخدم:", error);
+    res.status(500).json({ message: "حدث خطأ أثناء جلب بيانات المستخدم" });
+  }
 };
 
 /** =============================
@@ -160,6 +162,7 @@ const deleteVistor = async (req, res, next) => {
 module.exports = {
   registerNewVistor,
   getVistors,
+  getVistorProfile,
   updateVistorCheck,
   deleteVistor,
 };

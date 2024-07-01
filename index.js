@@ -22,6 +22,8 @@ const vistorRoutes = require("./routes/vistorRoutes");
 const degreeRoutes = require("./routes/degreeRoutes");
 const parentsRoutes = require("./routes/parentsRoutes");
 const whatsappRoutes = require("./routes/whatsappRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const createAdminAccount = require("./utils/createAdminAccount");
 const { cloudinaryUploadImage } = require("./utils/cloudinary");
 const { notFound, errorHandler } = require("./middlewares/error");
 const Message = require("./models/Message");
@@ -29,6 +31,7 @@ const Vistor = require("./models/Vistor");
 const port = process.env.PORT || 3001;
 
 dotenv.config();
+createAdminAccount();
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
@@ -59,6 +62,7 @@ app.use("/api/vistors", vistorRoutes);
 app.use("/api/degrees", degreeRoutes);
 app.use("/api/parents", parentsRoutes);
 app.use("/api/whatsapp", whatsappRoutes);
+app.use("/api/admin", adminRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
